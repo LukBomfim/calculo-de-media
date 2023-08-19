@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULO DE MÉDIA</title>
+    <style>
+        html{
+            height: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            background: linear-gradient(320deg, #00e7ad, #b3ff80, #9f98ff);
+            text-align: center;
+            font: normal 20pt Arial;
+        }
+        
+        h1{
+            font: Bold 40pt Arial;
+        }
+
+        section{
+            background-color: rgba(255, 255, 255, 0.664);
+            border-radius: 20px;
+            border: solid rgba(0, 0, 0, 0) 20px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.233);
+            width: 350px;
+            margin: auto;
+            line-height: 90px;
+        }
+        #notas{
+            font-size: 80%;
+            line-height: 50px;
+        }
+        .numNotas{
+            width: 50px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: solid 1px;
+        }
+        #botao{
+            font: bold 25pt Arial;
+            width: 250px;
+            background-color: #BEFFD0;
+            border: none;
+            border-radius: 100px;
+            box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.253);
+            transition: 0.2s;
+        }
+        #botao:hover{
+            background-color: #82FFA5;
+            transition: 0.2s;
+        }
+        #botao:active{
+            box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.295);
+        }
+
+        #limpar{
+            background-color: #CD0000;
+            font-size: 30px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.253);
+            padding-bottom: 5px;
+            transition: 0.2s;
+        }
+        #limpar:hover{
+            background-color: #ff0000;
+            transition: 0.2s;
+        }
+        #limpar:active{
+            box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.295);
+        }
+
+        a{
+            font: italic 15pt Arial;
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+        #result{
+            font: bold 20pt Arial;
+        }
+        #resp{
+            font: bold 20pt Arial;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Cálculo de média</h1>
+    </header>
+
+    <section>
+        <div class="antResult">
+            <div id="notas">
+                1° Nota: <input type="number" class="numNotas" name="n1" id="n1">
+                2° Nota: <input type="number" class="numNotas" name="n2" id="n2"> <br>
+                3° Nota: <input type="number" class="numNotas" name="n3" id="n3"> 
+                4° Nota: <input type="number" class="numNotas" name="n4" id="n4">
+            </div>
+
+            <input type="button" id="botao" value="Calcular" onclick="calcular()">
+            <input type="button" id="limpar" value="🗑️" onclick="limpar()">
+        </div>
+            <div id="result"></div>
+            <div id="resp"></div>
+
+    </section>
+
+    <footer>
+        <a href="https://www.instagram.com/luk.bomfim/">&copy; luk.bomfim</a>
+    </footer>
+    
+    <script>
+        function calcular(){
+            var n1 = document.getElementById('n1')
+            n1 = Number(n1.value)
+            var n2 = document.getElementById('n2')
+            n2 = Number(n2.value)
+            var n3 = document.getElementById('n3')
+            n3 = Number(n3.value)
+            var n4 = document.getElementById('n4')
+            n4 = Number(n4.value)
+            var media = (n1 + n2 + n3 + n4) / 4
+
+            var resp = document.getElementById('resp')
+            var result = document.getElementById('result')
+            result.innerHTML = `Sua média final foi <u>${media.toFixed(2).replace('.', ',')}`
+
+            // APROVADO OU RECUPERAÇÃO
+            if (media < 6){
+                resp.style.color = 'red'
+                resp.innerHTML = '<u>Você foi reprovado(a)</u>.' 
+            } else{
+                resp.style.color = '#18D44C'
+                resp.innerHTML = '<u>Você foi aprovado(a)</u>.'
+            }
+
+        }
+        function limpar(){
+            var n1 = document.getElementById('n1')
+            var n2 = document.getElementById('n2')
+            var n3 = document.getElementById('n3')
+            var n4 = document.getElementById('n4')
+            var result = document.getElementById('result')
+            var resp = document.getElementById('resp')
+
+            n1.value = ''
+            n2.value = ''
+            n3.value = ''
+            n4.value = ''
+            result.innerHTML = ''
+            resp.innerHTML = ''
+        }
+
+    </script>
+</body>
+</html>
